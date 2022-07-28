@@ -1,0 +1,49 @@
+{
+  "RsfItemInfoListResponseDto": {
+    "itemInfoList": [
+      "RsfItemInfoResponseDto",
+      {
+        "partNumber": "000000000121347746",
+        "categoryCode": "R0125001",
+        "itemId": "null",
+        "itemType": "10",
+        "cmmdtyType": "Z001",
+        "itemName": "北研定制厂送品0622",
+        "itemDisplayName": "PRE环境EPSON SIM卡厂送3",
+        "imageCount": "5",
+        "published": "1",
+        "sizeAttribute": "1",
+        "brandId": "000060058",
+        "isbnCode": "null",
+        "volume": "2.0",
+        "weight": "23.0",
+        "itemPrice": "null",
+        "brandName": "EPSON",
+        "brandCode": "0058",
+        "deleteFlag": "0",
+        "attachedTypeList": [
+          {
+            "attachedType": "1",
+            "attachedValue": "000000000940001570"
+          },
+          {
+            "attachedType": "1",
+            "attachedValue": "000000000940001654"
+          },
+          {
+            "attachedType": "1",
+            "attachedValue": "000000000940001674"
+          }
+        ],
+        "pattern": "null",
+        "color": "null",
+        "version": "null",
+        "categoryId": "null",
+        "categoryName": "null",
+        "buyCatgroupName": "null",
+        "errCode": "0",
+        "errDesc": "null"
+      }
+    ]
+  }
+}
