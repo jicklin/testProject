@@ -7,7 +7,6 @@ import org.bouncycastle.jce.provider.BouncyCastleProvider;
 import javax.crypto.*;
 import javax.crypto.spec.IvParameterSpec;
 import javax.crypto.spec.SecretKeySpec;
-import java.io.UnsupportedEncodingException;
 import java.security.*;
 
 public class AESUtil {
@@ -34,6 +33,7 @@ public class AESUtil {
         SecretKeySpec skey = new SecretKeySpec(key.getBytes(), "AES");
         Cipher cipher = Cipher.getInstance("AES/CBC/PKCS7Padding");
         IvParameterSpec iv = new IvParameterSpec(bytes,0,16);
+        byte[] ivData = ArrayUtil.sub(bytes, 0, 16);
         cipher.init(Cipher.DECRYPT_MODE, skey, iv);
 
         String publicKey = "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAu6gQV44C65NrdmeqJVAw" +
@@ -47,7 +47,15 @@ public class AESUtil {
         String sign = "kzh/xptOlrRlF5bkxt322JtQzeeTn3rHElyLf3IWCzUsa6m2Y7iBAGbuev+P/g6UJw7GUoZm1hiAoItRLlZMKUFB5sHIP9Th90fnX9scZMKZLjwwKNRMa3R/Q9OcuK623put30leW6KSF10m+9u00JNjpN/yKyABT6nGIQCK1qUmJHK5r4wenF3wo+ELvWsIhZytpfFs9ALt9JKFXYsrOgggN4lLt/omNB60H71OuR+6itMYqk8KTUNYrFA7dOvvhJouG6maHr9ShGZQegQN6fpQouDdz+hnD8WCqSPmS3gtrxGBfQ2+OpOvl4mwFMHmEkUVSplmPnP4lBJrcdDxXg==";
 
 
-        System.out.println(RSAUtil.verify(cipher.doFinal(ArrayUtil.sub(bytes, 16, bytes.length)), Base64.decodeBase64(sign), RSAUtil.loadPublicKey(publicKey)));
+        byte[] unSignedData = cipher.doFinal(ArrayUtil.sub(bytes, 16, bytes.length));
+        System.out.println(RSAUtil.verify(unSignedData, Base64.decodeBase64(sign), RSAUtil.loadPublicKey(publicKey)));
+
+        Cipher enCipher = Cipher.getInstance("AES/CBC/PKCS7Padding");
+
+        enCipher.init(Cipher.ENCRYPT_MODE, skey, iv);
+        byte[] bytes1 = enCipher.doFinal(unSignedData);
+        byte[] bytes2 = ArrayUtil.addAll(ivData, bytes1);
+        System.out.println(Base64.encodeBase64String(bytes2));
 
 
     }
