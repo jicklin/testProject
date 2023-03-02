@@ -1,8 +1,8 @@
 package test;
 
-import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.time.ZoneId;
+import net.sf.cglib.core.Local;
+
+import java.time.*;
 import java.time.format.DateTimeFormatter;
 import java.util.Date;
 
@@ -28,6 +28,15 @@ public class TestLocalTime {
 		System.out.println(targetDateTime);
 		System.out.println(LocalDateTime.now());
 		System.out.println(LocalDateTime.now().isBefore(targetDateTime));
+
+		LocalDate startLocal = LocalDate.of(2022, 4, 9);
+		long days = LocalDate.now().toEpochDay() - startLocal.toEpochDay();
+		System.out.println(days /7);
+		System.out.println(days %7);
+
+
+
+
 
 
 

@@ -35,6 +35,8 @@ public class TestString {
 		System.out.println("第【"+(a+1)+"】次");
 		System.out.println(a);
 
+		System.out.println("孙刚".equals("孙刚"));
+
 	}
 
 	private static void addA(Integer a) {

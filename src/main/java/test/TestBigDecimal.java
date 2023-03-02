@@ -1,6 +1,7 @@
 package test;
 
 import com.sun.xml.internal.messaging.saaj.util.ByteInputStream;
+import org.junit.Test;
 
 import java.io.*;
 import java.math.BigDecimal;
@@ -34,6 +35,22 @@ public class TestBigDecimal {
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
 		}
+
+
+	}
+
+
+	@Test
+	public void testRound() {
+		double a  = 1.1;
+		double b  = -1.1;
+		System.out.println(Math.ceil(a));
+		System.out.println(Math.floor(a));
+		System.out.println(Math.ceil(b));
+		System.out.println(Math.floor(b));
+		int c = 1234;
+		System.out.println(c / 1000);
+		System.out.println(c % 1000);
 
 
 	}
